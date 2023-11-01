@@ -9,11 +9,12 @@
 		count -= 1;
 	}
 	import { onMount } from "svelte";
-	const endpoint = "https://www.anapioficeandfire.com/api/characters";
+	const endpoint ='https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json'
 	onMount(async function () {
   const response = await fetch(endpoint);
   const data = await response.json();
-  postCount=data.length;
+  const Results=data.Results;
+  postCount=Results.length;
   console.log(data);
 });
 </script>
