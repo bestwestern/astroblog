@@ -3,7 +3,7 @@ let el;
 const endpoint ='https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json'
   const response = await fetch(endpoint);
   const data = await response.json();
-  const Results=data.Results;
+  const Results=data.Results.slice(0,10)
   console.log(Results)
   
   ---
