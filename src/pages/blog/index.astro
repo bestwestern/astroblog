@@ -88,6 +88,9 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
+		<Counter client:visible>
+			<h1>Hello, Svelte!</h1>
+		</Counter>
 			<section>
 				<ul>
 					{
@@ -106,9 +109,6 @@ const posts = (await getCollection('blog')).sort(
 				</ul>
 			</section>
 		</main>
-		<Counter client:visible>
-			<h1>Hello, Svelte!</h1>
-		</Counter>
 		<Footer />
 	</body>
 </html>
