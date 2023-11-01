@@ -4,7 +4,7 @@ export async function getStaticPaths() {
   const response = await fetch(endpoint);
   const data = await response.json();
   const Results=data.Results;
-  const test=Results.slice(0,10).map(el=>el.Mfr_Name.substr(0,4).toLowerCase())
+  const test=Results.slice(0,10).map(el=>el.Mfr_Name.substr(0,3).toLowerCase())
   return test.map(el=>{return {params:{dog:el.toLowerCase()}}})
 
   }  
