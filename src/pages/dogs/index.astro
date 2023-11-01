@@ -1,0 +1,22 @@
+---
+let el;
+const endpoint ='https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json'
+  const response = await fetch(endpoint);
+  const data = await response.json();
+  const Results=data.Results;
+  console.log(Results)
+  
+  ---
+  <div>
+    <h1>jklfds</h1>
+    {
+						Results.map((el) => (
+							<li>
+								<a href={`/dogs/${el.Mfr_Name.substr(0,3).toLowerCase()}/`} rel="prefetch">
+								<b>{el.Mfr_Name}</b>
+                                </a>
+                                </li>
+                                <br/>
+						))
+					}
+    </div>
