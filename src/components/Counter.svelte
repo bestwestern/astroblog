@@ -1,13 +1,21 @@
 <script lang="ts">
-	let count = 0;
-
+	let count=0;
+	let postCount="..";
 	function add() {
 		count += 1;
 	}
-
+	
 	function subtract() {
 		count -= 1;
 	}
+	import { onMount } from "svelte";
+	const endpoint = "https://www.anapioficeandfire.com/api/characters";
+	onMount(async function () {
+  const response = await fetch(endpoint);
+  const data = await response.json();
+  postCount=data.length;
+  console.log(data);
+});
 </script>
 
 <div class="counter">
@@ -15,6 +23,7 @@
 	<pre>{count}</pre>
 	<button on:click={add}>+</button>
 </div>
+<pre>{postCount}</pre>
 <div class="message">
 	<slot />
 </div>
