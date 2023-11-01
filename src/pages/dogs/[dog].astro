@@ -1,10 +1,12 @@
 ---
-export function getStaticPaths() {
-    return [
-      {params: {dog: 'clifford'}},
-      {params: {dog: 'rover'}},
-      {params: {dog: 'spot'}},
-    ];
+export async function getStaticPaths() {
+  const endpoint ='https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json'
+  const response = await fetch(endpoint);
+  const data = await response.json();
+  const Results=data.Results;
+  const test=Results.slice(0,10).map(el=>el.Mfr_Name.substr(0,4).toLowerCase())
+  return test.map(el=>{return {params:{dog:el.toLowerCase()}}})
+
   }  
   
 const { dog } = Astro.params;
